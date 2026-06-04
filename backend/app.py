@@ -3,11 +3,16 @@ Flask API — Air Quality & Weather Prediction for Safi, Morocco.
 """
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+
 from weather import get_current_weather, get_forecast, simulate_gas_flow, degree_to_direction
 from utils import build_features
 from models import predict_risk, get_feature_names
 from config import RISK_CLASSES, SAFI_LAT, SAFI_LON, OCP_LAT, OCP_LON
 import traceback
+
+# 👉 AJOUT ICI (IMPORTANT)
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
